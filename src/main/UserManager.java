@@ -28,13 +28,15 @@ public class UserManager {
      * @param user - User to be created
      * @return successfully created user
      */
-    public User createUser(User user) {
+    public User createUser(User user) throws UserExistsException {
 
         // PARTICIPANTS: Update this method to throw your new exception if the email is already in use.
 
         if (!(isEmailInUse(user.getEmail()))) {
             userList.add(user);
-        }
+        } else {{
+            throw new UserExistsException("Email already exists");
+        }}
 
         return user;
     }
